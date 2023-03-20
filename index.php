@@ -37,7 +37,7 @@ $stmt-> execute();
           <li class="nav-item active">
             <a class="nav-link" href="#">Home <span class="sr-only">(atual)</span></a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item">PDO
             <a class="nav-link" href="#">Link</a>
           </li>
           <li class="nav-item">
@@ -52,7 +52,7 @@ $stmt-> execute();
     </nav>
 
     <main role="main" class="container">
-      <div class="jumbotron">
+      <div class="jumbotron">PDO
         <h1>Exemplo de navbar</h1>
         <p class="lead">Este exemplo é um simples exercício para ilustrar como navbars estáticas (no topo) funcionam. Assim, você verá que enquanto rola a página a navbar continua em sua posição original e move-se com o resto da página.</p>
         <a class="btn btn-lg btn-primary" href="../../components/navbar/" role="button">Veja a documentação &raquo;</a>
