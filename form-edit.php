@@ -9,7 +9,7 @@ if (empty($id))
 }
 
 $PDO = db_connect();
-$sql = "SELECT name, local, estilo FROM users WHERE id =:id";
+$sql = "SELECT name, local, estilo, publico_estimado FROM Shows WHERE id =:id";
 $stmt = $PDO-> prepare($sql);
 $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
 $stmt -> execute();
@@ -49,6 +49,11 @@ if (!is_array($user))
             <label for="local"> Local: </label>
             <input type="text" class="form-control col-sm" name="local" id="local" style= "width:25%;"
                     value="<?php echo $user['local'] ?>">
+        </div>
+        <div class="form-group">
+            <label for="publico_estimado"> Publico Estimado: </label>
+            <input type="int" class="form-control col-sm" name="publico_estimado" id="publico_estimado" style= "width:25%;"
+                    value="<?php echo $user['publico_estimado'] ?>">
         </div>
             <input type="hidden" name="id" value="<?php echo $id ?> ">
             <button type="submit" class="btn btn-primary">Alterar</button>

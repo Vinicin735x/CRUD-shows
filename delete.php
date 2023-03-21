@@ -9,9 +9,9 @@ if(empty($show))
 }
 
 $PDO = db_connect();
-$sql = "DELETE FROM users WHERE id = :id";
+$sql = "DELETE FROM Shows WHERE id = :id";
 $stmt = $PDO-> prepare($sql);
-$stmt ->bindParam(':shows', $show, PDO::PARAM_INT);
+$stmt ->bindParam(':id', $show, PDO::PARAM_INT);
 if ($stmt->execute())
 {
     header('Location: index.php');

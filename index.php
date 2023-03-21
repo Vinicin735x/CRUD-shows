@@ -1,12 +1,13 @@
 <?php
 require_once 'init.php';
 
+
 $PDO = db_connect();
-$sql_count ='SELECT COUNT(*) AS total FROM users ORDER BY name ASC';
-$sql = "SELECT id, name, nome do artista e da banda, local_show, estilo, publico estimado FROM users ORDER BY name ASC";
+$sql_count ='SELECT COUNT(*) AS total FROM Shows ORDER BY name ASC';
+$sql = "SELECT id, name, local, estilo, publico_estimado FROM Shows ORDER BY name ASC";
 $stmt_count = $PDO->prepare($sql_count);
 $stmt_count ->execute();
-$total = $stmt_count -> fetchColimn();
+$total = $stmt_count -> fetchColumn();
 $stmt = $PDO -> prepare($sql);
 $stmt-> execute();
 ?>
@@ -26,38 +27,55 @@ $stmt-> execute();
     </style>
     </head>
     <body>
+             
+            
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-      <a class="navbar-brand" href="#">Top navbar</a>
+      <a class="navbar-brand" href="#">CEFET-MG</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(atual)</span></a>
-          </li>
-          <li class="nav-item">PDO
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Desativado</a>
-          </li>
-        </ul>
-        <form class="form-inline mt-2 mt-md-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Pesquisa" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
-        </form>
-      </div>
     </nav>
 
     <main role="main" class="container">
-      <div class="jumbotron">PDO
-        <h1>Exemplo de navbar</h1>
-        <p class="lead">Este exemplo é um simples exercício para ilustrar como navbars estáticas (no topo) funcionam. Assim, você verá que enquanto rola a página a navbar continua em sua posição original e move-se com o resto da página.</p>
-        <a class="btn btn-lg btn-primary" href="../../components/navbar/" role="button">Veja a documentação &raquo;</a>
+      <div class="jumbotron">
+        <h1>Shows de Varginha</h1>
+        <p class="lead">Este é um site para cadastro dos shows que serão realizados na cidade de Varginha-Mg.</p>
+        <a class="btn btn-lg btn-primary" href="form-add.php" role="button">Cadastre aqui &raquo;</a>
       </div>
     </main>
 
+    <div class="container">
+        <h2>Lista de bandas</h2>
+        <p> Total de bandas: <?php echo $total ?></p>
+        <?php if ($total > 0): ?>
+        <table classs="table table.striped" width="50%" border="1">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Local</th>
+              <th>Estilo</th>
+              <th>Publico estimado</th>
+            </tr>    
+          </thead>  
+          <tbody>
+            <?php while ($user = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
+            <tr>
+                <td><?php echo $user['name'] ?></td>
+                <td><?php echo $user['local'] ?></td>
+                <td><?php echo $user['estilo'] ?></td>
+                <td><?php echo $user['publico_estimado'] ?></td>
+                <td>
+                  <a href="form-edit.php?id=<?php echo $user['id'] ?>">Editar</a>
+                  <a href="delete.php?id=<?php echo $user['id'] ?>" onclick="return confirm('Tem certeza que deseja remover?');">Remover</a>
+                </td>  
+            </tr>
+            <?php endwhile; ?>
+          </tbody>
+        </table>
+        <?php else: ?>
+        <p> Nenhum usuário registrado </p>
+        <?php endif; ?>
+      </div>
+
   </body>
-    
+</html>    

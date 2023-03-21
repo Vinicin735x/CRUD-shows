@@ -27,6 +27,10 @@ require 'init.php';
             <label for="estilo"> Estilo: </label>
             <input type="text" class="form-control col-sm" name="estilo" id="estilo" style= "width:25%;" placeholder="Informe o estilo musical">
         </div>
+        <div class="form-group">
+            <label for="publico_estimado"> Publico Estimado: </label>
+            <input type="int" class="form-control col-sm" name="publico_estimado" id="publico_estimado" style= "width:25%;" placeholder="Informe o publico estimado">
+        </div>
             <button type="submit" class="btn btn-primary"> Cadastrar </button>
         </form>
     </div>
