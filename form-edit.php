@@ -1,4 +1,7 @@
 <?php
+
+// Exibe um formulário para editar os dados dos shows
+
 require 'init.php';
 $id = isset($_GET['id']) ? (int) $_GET['id'] : null;
 

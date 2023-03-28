@@ -1,4 +1,7 @@
 <?php
+
+// Arquivo que insere os dados do formulário no banco de dados
+
 require_once 'init.php';
 $name = isset($_POST['name']) ? $_POST['name'] : null;
 $local = isset($_POST['local']) ? $_POST['local'] : null;

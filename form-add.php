@@ -1,4 +1,7 @@
 <?php
+
+// Exibe um formulário para cadastrar shows
+
 require 'init.php';
 ?>
 <!doctype html>

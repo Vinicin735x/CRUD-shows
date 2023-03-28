@@ -1,5 +1,7 @@
 <?php
 
+// Arquivo que contém costantes e parâmetros do banco de dados 
+
 define('DB_HOST', 'localhost');
 define('DB_USER', 'alunos');
 define('DB_PASS', 'cefetmg');

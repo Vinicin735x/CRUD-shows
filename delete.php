@@ -1,4 +1,7 @@
 <?php
+
+// Arquivo que exclui shows cadastrados
+
 require_once 'init.php';
 $show = isset($_GET['id']) ? $_GET['id'] : null;
 

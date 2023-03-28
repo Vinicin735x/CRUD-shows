@@ -1,4 +1,7 @@
 <?php
+
+// Arquivo que atualiza os dados dos shows na tabela shows do bando de dados
+
 require 'init.php';
 $name = isset($_POST['name']) ? $_POST['name'] : null;
 $local = isset($_POST['local']) ? $_POST['local'] : null;

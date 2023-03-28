@@ -1,4 +1,7 @@
 <?php
+
+// Exibe a lista de todos os shows cadastrados
+
 require_once 'init.php';
 
 
