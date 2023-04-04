@@ -16,6 +16,7 @@ $stmt-> execute();
 ?>
 <!doctype html>
 <html>
+    <link rel="stylesheet" href="./css/style.css"/>
     <head>
         <meta charset="utf-8">
         <title> Cadastro de shows assistidos </title>
@@ -34,20 +35,43 @@ $stmt-> execute();
             
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-      <a class="navbar-brand" href="#">CEFET-MG</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </nav>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">CEFET-MG</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 align-items-center">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="d-flex ml-auto" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+    
 
     <main role="main" class="container">
       <div class="jumbotron">
         <h1>Shows de Varginha</h1>
-        <p class="lead">Este é um site para cadastro dos shows que serão realizados na cidade de Varginha-Mg.</p>
+        <p class="lead">Este é um site para cadastro dos shows que serão realizados em Minas Gerais.</p>
         <a class="btn btn-lg btn-primary" href="form-add.php" role="button">Cadastre aqui &raquo;</a>
       </div>
     </main>
 
-    <div class="container">
+    <div class="container -lg">
         <h2>Lista de bandas</h2>
         <p> Total de bandas: <?php echo $total ?></p>
         <?php if ($total > 0): ?>
@@ -79,6 +103,19 @@ $stmt-> execute();
         <p> Nenhum usuário registrado </p>
         <?php endif; ?>
       </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <footer>
+       <a href="https://www.instagram.com/terceiroinfo23/" target="_blank">
+          <img src="./img/insta 1.png" alt="Instagram" />
+        </a>
+      </footer>
 
   </body>
 </html>    
