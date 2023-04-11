@@ -1,5 +1,9 @@
 <?php
-
+require_once ’init.php’;
+$PDO = db_connect() ;
+$sql = " SELECT id , descricao_estilo FROM Estilos ORDER BY descricao_estilo ASC";
+$stmt = $PDO -> prepare( $sql );
+$stmt -> execute ();
 // Exibe a lista de todos os shows cadastrados
 
 require_once 'init.php';
