@@ -1,7 +1,7 @@
 <?php
-require_once ’init.php’;
+require_once 'init.php';
 $PDO = db_connect() ;
-$sql = " SELECT id , descricao_estilo FROM Estilos ORDER BY descricao_estilo ASC";
+$sql = " SELECT id , descricao_estilo FROM Estilo ORDER BY descricao_estilo ASC";
 $stmt = $PDO -> prepare( $sql );
 $stmt -> execute ();
 // Exibe a lista de todos os shows cadastrados
@@ -11,14 +11,14 @@ require_once 'init.php';
 
 $PDO = db_connect();
 $sql_count ='SELECT COUNT(*) AS total FROM Shows ORDER BY name ASC';
-$sql = "SELECT id, name, local, estilo, publico_estimado FROM Shows ORDER BY name ASC";
+$sql = "SELECT id, name, local, estilo_id, publico_estimado FROM Shows ORDER BY name ASC";
 $stmt_count = $PDO->prepare($sql_count);
 $stmt_count ->execute();
 $total = $stmt_count -> fetchColumn();
 $stmt = $PDO -> prepare($sql);
 $stmt-> execute();
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <link rel="stylesheet" href="./css/style.css"/>
     <head>
@@ -26,6 +26,8 @@ $stmt-> execute();
         <title> Cadastro de shows assistidos </title>
 
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <script src="bootstrap/js/jquery.js"></script>
+    <script src="bootstrap/js/popper.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
     <style type="text/css">
         .container{
@@ -48,13 +50,11 @@ $stmt-> execute();
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 align-items-center">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+            Menu
           </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <ul class="Menu-menu">
+            <li><a class="dropdown-item" href="https://www.tiktok.com/@sons_de_memes/video/7214273151268605190">Shows</a></li>
+            <li><a class="dropdown-item" href="#">Estilos</a></li>
           </ul>
         </li>
       </ul>
@@ -71,50 +71,14 @@ $stmt-> execute();
       <div class="jumbotron">
         <h1>Shows de Varginha</h1>
         <p class="lead">Este é um site para cadastro dos shows que serão realizados em Minas Gerais.</p>
-        <a class="btn btn-lg btn-primary" href="form-add.php" role="button">Cadastre aqui &raquo;</a>
+        <img src="./img/ghostbc.png" alt="">
+      </div>
+      <div>
+      <a class="btn btn-lg btn-primary" href="form-add.php" role="button">Cadastre aqui &raquo;</a>
       </div>
     </main>
-
-    <div class="container -lg">
-        <h2>Lista de bandas</h2>
-        <p> Total de bandas: <?php echo $total ?></p>
-        <?php if ($total > 0): ?>
-        <table classs="table table.striped" width="50%" border="1">
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>Local</th>
-              <th>Estilo</th>
-              <th>Publico estimado</th>
-            </tr>    
-          </thead>  
-          <tbody>
-            <?php while ($user = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
-            <tr>
-                <td><?php echo $user['name'] ?></td>
-                <td><?php echo $user['local'] ?></td>
-                <td><?php echo $user['estilo'] ?></td>
-                <td><?php echo $user['publico_estimado'] ?></td>
-                <td>
-                  <a href="form-edit.php?id=<?php echo $user['id'] ?>">Editar</a>
-                  <a href="delete.php?id=<?php echo $user['id'] ?>" onclick="return confirm('Tem certeza que deseja remover?');">Remover</a>
-                </td>  
-            </tr>
-            <?php endwhile; ?>
-          </tbody>
-        </table>
-        <?php else: ?>
-        <p> Nenhum usuário registrado </p>
-        <?php endif; ?>
-      </div>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
+   
+      
       <footer>
        <a href="https://www.instagram.com/terceiroinfo23/" target="_blank">
           <img src="./img/insta 1.png" alt="Instagram" />
