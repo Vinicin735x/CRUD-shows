@@ -14,11 +14,11 @@ if (empty($name) || empty($local) || empty($estilo) || empty($publico_estimado))
     exit;
 }
 $PDO = db_connect();
-$sql = "INSERT INTO Shows(name, local, estilo, publico_estimado) VALUES(:name, :local, :estilo, :publico_estimado)";
+$sql = "INSERT INTO Shows(name, local, estilo, publico_estimado) VALUES(:name, :local, :estilo_id, :publico_estimado)";
 $stml = $PDO-> prepare($sql);
 $stml ->bindParam(':name', $name);
 $stml ->bindParam(':local', $local);
-$stml ->bindParam(':estilo', $estilo);
+$stml ->bindParam(':estilo', $estilo_id);
 $stml ->bindParam(':publico_estimado', $publico_estimado);
 if ($stml->execute())
 {
