@@ -52,5 +52,16 @@ $stmt-> execute();
                 <picture>
                     <img src="./img/image 4.png" alt="guitarra" />
                 </picture>
-          </body>
-            </html>
+        </body>
+        <footer>
+
+            <div>
+
+                <a href="https://www.instagram.com/terceiroinfo23/" target="_blank">
+                    <img src="./img/insta 1.png" alt="Instagram" />
+                </a>
+                
+            </div>
+
+        </footer>
+        </html>
