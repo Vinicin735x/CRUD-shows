@@ -12,11 +12,15 @@ if (empty($id))
 }
 
 $PDO = db_connect();
-$sql = "SELECT name, local, estilo, publico_estimado FROM Shows WHERE id =:id";
+$sql = "SELECT name, local, estilo_id, publico_estimado FROM Shows WHERE id =:id";
 $stmt = $PDO-> prepare($sql);
 $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
 $stmt -> execute();
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$sql2 = "SELECT id, descricao_estilo FROM Estilo ORDER BY descricao_estilo ASC";
+$stmt2 = $PDO->prepare($sql2);
+$stmt2->execute();
 
 if (!is_array($user))
 {
@@ -45,8 +49,11 @@ if (!is_array($user))
         </div>
         <div class="form-group">
             <label for="estilo"> Estilo: </label>
-            <input type="text" class="form-control col-sm" name="estilo" id="estilo" style= "width:25%;"
-                    value="<?php echo $user['estilo'] ?>">
+            <select class ="form-control" name ="estilo_id" id ="estilo_id" required >
+                <?php while ( $estilo_id = $stmt2 -> fetch ( PDO :: FETCH_ASSOC)): ?>
+                    <option value =" <?php echo $estilo_id ['id'] ?> "> <?php echo $estilo_id ['descricao_estilo'] ?> </option>
+                <?php endwhile; ?>
+                </select>
         </div>
         <div class="form-group">
             <label for="local"> Local: </label>

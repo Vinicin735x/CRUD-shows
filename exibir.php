@@ -32,7 +32,7 @@ $stmt ->execute();
     <div class="container jumbotron mt-3">
         <div class="container">
             <h1>Listagem das Bandas</h1>
-            <h2>Lista de Bandass</h2>
+            <h2>Lista de Bandas</h2>
             <p>Total de Bandas: <?php echo $total ?></p>
             <?php if ($total > 0): ?>
             <table class="table table-striped" width="50%" border="1">
@@ -46,7 +46,7 @@ $stmt ->execute();
                                 <td><?php echo $user['publico_estimado'] ?></td>
                              
                                 <td>
-                                    <a class="btn btn-outline-primary" href="delete.php?id=<?php echo $user['id'] ?>" onclick="return confirm('Tem certeza que deseja editar?');">Editar</a>
+                                    <a class="btn btn-outline-primary" href="form-edit.php?id=<?php echo $user['id'] ?>">Editar</a>
                                     <a class="btn btn-outline-danger" href="delete.php?id=<?php echo $user['id'] ?>" onclick="return confirm('Tem certeza que deseja remover?');">Remover</a>
 
                                 </td>
@@ -55,7 +55,7 @@ $stmt ->execute();
                         </tbody>
                     </table>
                     <?php else: ?>
-                    <p>Nenhum hobby registrado</p>
+                    <p>Nenhuma banda registrada</p>
                     <?php endif; ?>
                     </div>
                 </body>
